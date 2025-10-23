@@ -4,10 +4,12 @@ const path = require('path');
 const guestbookRoutes = require('./routes/guestbook');
 
 const PORT = 3000;
-
 const app = express();
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.urlencoded({extended: true}));
 
 app.use('/',guestbookRoutes);
 
