@@ -5,7 +5,7 @@ let guestbookEntries = [];
 
 router.get('/',(req,res) => {
 
-    res.render('guestbook');
+    res.render('guestbook', {entries : guestbookEntries});
 
 });
 

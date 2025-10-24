@@ -24,5 +24,30 @@
 
     </form>
 
+    <h2>Messages</h2>
+
+    <div class="messages-list">
+        
+        <% if (entries.length > 0) { %>
+
+            <% entries.forEach(entry => { %>
+                
+                <div class="message-item" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+                    
+                    <strong><%= entry.name %></strong>
+                    
+                    <p><%= entry.message %></p>
+                </div>
+
+            <% }) %>
+
+        <% } else { %>
+            
+            <p>No messages yet. Be the first to sign!</p>
+
+        <% } %>
+
+    </div>
+
 </body>
 </html>
