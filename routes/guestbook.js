@@ -3,21 +3,35 @@ const router = express.Router();
 
 let guestbookEntries = [];
 
+
 router.get('/',(req,res) => {
 
-    res.render('guestbook', {entries : guestbookEntries});
 
+    const reversedEntries = guestbookEntries.slice().reverse();
+
+    res.render('guestbook', { entries: reversedEntries });
 });
+
 
 router.post('/sign',(req,res) => {
 
     const name = req.body.name;
     const message = req.body.message;
 
-    guestbookEntries.push({name,message});
+    if (name.trim() !== '' && message.trim() !== '') {
+        
+        const newEntry = {
+            name: name.trim(),
+            message: message.trim(),
+            timestamp: new Date() 
+        };
+        
 
-    res.redirect('/');
+        guestbookEntries.push(newEntry);
+    }
     
+    res.redirect('/');
 });
 
 module.exports = router;
+
